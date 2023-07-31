@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+ vite-react:
+    image: vite-react
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    ports:
+      - 3000:3000
+    networks:
+      - frontend
+    restart: unless-stopped
+    env_file:
+      - .env
+networks:
+  frontend:
